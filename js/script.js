@@ -9,7 +9,6 @@ const a1 = {
     3: 'hello',
     'one': 'hi',
 };
-
 let out_1 = '';
 for (let key in a1) {
     out_1 += key + '--' + a1[key] + '<br>';
@@ -18,7 +17,6 @@ document.querySelector('.out-1').innerHTML = out_1;
 
 // Task 2
 // Выведите на страницу элементы из масиива a2 у которых символов больше 4.
-
 // a2 = {
 //   3: 'hello',
 //   'one': 'hi',
@@ -26,7 +24,7 @@ document.querySelector('.out-1').innerHTML = out_1;
 //   'ivan': 'ivanov'
 // };
 
-a2 = {
+const a2 = {
     3: 'hello',
     'one': 'hi',
     'testt': 'vodoley',
@@ -42,8 +40,6 @@ for (let key in a2) {
 }
 document.querySelector('.out-2').innerHTML = out_2;
 
-
-
 // Task 3
 // Выведите на страницу элементы из масиива a3 у которых ключ содержит больше 4 символов.
 
@@ -54,7 +50,7 @@ document.querySelector('.out-2').innerHTML = out_2;
 //   'ivan' : 'ivanov'
 //  };
 
-a3 = {
+const a3 = {
     3: 'hello',
     'one': 'hi',
     'testt': 'vodoley',
@@ -70,7 +66,6 @@ for (let key in a3) {
 }
 document.querySelector('.out-3').innerHTML = out_3;
 
-
 // Task 4
 // Выведите на страницу элементы из масиива a4 у которых значение - число.
 
@@ -81,13 +76,12 @@ document.querySelector('.out-3').innerHTML = out_3;
 //  'ivan' : 6
 // };
 
-a4 = {
+const a4 = {
     3: 'hello',
     'one': 4,
     'testt': 'vodoley',
     'ivan': 6
 };
-
 let out_4 = '';
 for (let key in a4) {
     let a4_1 = a4[key];
@@ -107,13 +101,12 @@ document.querySelector('.out-4').innerHTML = out_4;
 //   f : 6
 //  };
 
-a5 = {
+const a5 = {
     a: 7,
     z: 4,
     45: 12,
     f: 6
 };
-
 let summ = 0;
 for (let key in a5) {
     summ += +a5[key];
@@ -123,34 +116,116 @@ document.querySelector('.out-5').innerHTML = summ;
 // Task 6
 // Создайте ассоциативный массив a6, который содержит ключи name, age, sex, height и значения любого персонажа. Выведите массив на страницу.
 
+const a6 = {
+    'name': 'Ruslan',
+    'age': 33,
+    'sex': 'man',
+    'height': 27
+};
+out_6 = '';
+for (let key in a6) {
+    out_6 += key + '--' + a6[key] + '<br>';
+}
+document.querySelector('.out-6').innerHTML = out_6;
+
 // Task 7
 // Создайте ассоциативный массив a7, два input (u7-key__input, u7-value__input) и кнопку. При нажатии кнопки добавляйте в массив новое значение с соответствующим ключем. Выводите массив на страницу.
+
+let a7 = {};
+let inp7_key = document.querySelector('.u7-key__input');
+let inp7_value = document.querySelector('.u7-value__input');
+let btn7 = document.querySelector('.task7Btn');
+out_7 = '';
+function func_7() {
+    let key = inp7_key.value;
+    a7[key] = inp7_value.value;
+    out_7 += key + ' -- ' + a7[key] + '<br>';
+    document.querySelector('.out-7').innerHTML = out_7;
+    inp7_key.value = '';
+    inp7_value.value = '';
+}
+btn7.onclick = () => func_7();
 
 // Task 8
 //Добавьте к предыдущей задачи input.u8-key__input и кнопку. При нажатии кнопки - удаляйте значение с соответствующим ключем. Выводите массив на страницу.
 
+let inp8_key = document.querySelector('.u8-delete-value__input');
+let btn8 = document.querySelector('.task8Btn');
+function func_8() {
+    out_8 = '';
+    delete a7[inp8_key.value];
+    for (let key in a7) {
+        out_8 += key + ' -- ' + a7[key] + '<br>';
+    }
+    document.querySelector('.out-8').innerHTML = out_8;
+    inp8_key.value = '';
+}
+btn8.onclick = () => func_8();
+
 // Task 9
 // Добавьте к предыдущей задачи input.u9-delete-value__input и кнопку. При нажатии кнопки - удаляйте записи с соответствующим значением. Выводите массив на страницу.
 
+let inp9_value = document.querySelector('.u9-delete-value__input');
+let btn9 = document.querySelector('.task9Btn');
+function func_9() {
+    out_9 = '';
+    for (let key in a7) {
+        if (a7[key] == inp9_value.value) {
+            delete a7[key];
+        }
+    }
+    for (let key in a7) {
+        out_9 += key + ' -- ' + a7[key] + '<br>';
+    }
+    document.querySelector('.out-9').innerHTML = out_9;
+    inp9_value.value = '';
+}
+btn9.onclick = () => func_9();
 
 // Task 10
 // Добавьте к предыдущей задачи input.u10-has-key__input и кнопку. При нажатии кнопки - возвращайте true если такой ключ есть в массиве, и false если нет.
 
+let inp10_key = document.querySelector('.u10-has-key__input');
+let btn10 = document.querySelector('.task10Btn');
+function func_10() {
+    let a10 = false;
+    for (let key in a7) {
+        if (key == inp10_key.value) {
+            a10 = true;
+        }
+    }
+    inp10_key.value = '';
+    console.log(a10);
+}
+btn10.onclick = func_10;
+
 // Task 11
 // Создайте массив, который описывает метро киевского метрополитена, выведите его на страницу.
-
 // a11 = {
 // 	"red" : ['Академгородок',...],
 // 	"green" : 
 // }
+
+let a11 = {
+    "red": ['Академгородок', 'Житомирская', 'Святошин', 'Нивки', 'Берестейская', 'Шулявская', 'Политехнический институт', 'Вокзальная', 'Университет', 'Театральная', 'Крещатик', 'Арсенальная', 'Днепр', 'Гидропарк', 'Левобережная', 'Дарница', 'Черниговская', 'Лесная'],
+    "green": ['Сырец', 'Дорогожичи', 'Лукьяновская', 'Золотые ворота', 'Дворец      спорта', 'Кловская', 'Печерская', 'Дружбы народов', 'Выдубичи', 'Славутич', 'Осокорки', 'Позняки', 'Харьковская', 'Вырлица', 'Бориспольская', 'Красный хутор'],
+    "blue": ['Героев Днепра', 'Минская', 'Оболонь', 'Петровка', 'Тараса Шевченка', 'Контрактовая площадь', 'Почтовая площадь', 'Майдан Нэзалэжности', 'Площадь Льва Толстого', 'Олимпийская', 'Дворец "Украина"', 'Лыбедская', 'Демеевская', 'Голосеевская', 'Васильковская', 'Выставочный центр', 'Иподром', 'Теремки']
+}
+let out_11 = '';
+for (let key in a11) {
+    out_11 += key + ' --- ';
+    for (let i = 0; i < a11[key].length; i++) {
+        out_11 += a11[key][i] + ' &nbsp ';
+    }
+    out_11 += '<br>';
+}
+document.querySelector('.out-11').innerHTML = out_11;
 
 // Task 12
 // Добавьте к предыдущей задаче select.u12-branch и кнопку. Пользователь может выбрать цвет ветки и нажать кнопку, после чего на страницу будут выведены только станции данной ветки.
 
 // Task 13
 // Добавьте к предыдущей задаче кнопку button.u13-reverse которая при нажатии выводит станции ветки в обратном порядке. Внимание! Все подобные задачи не меняют массив, а меняют только вывод!!!
-
-
 
 // Task 14
 // Добавьте к предыдущей задаче select.u14-find-station и кнопку. В select - пользователь может выбрать станцию, а вы перебирая массив - вывести ветку на которой эта станция находится.
