@@ -1,10 +1,20 @@
 // Task 1
 // Выведите массив a1 на страницу.
-// const a = [
-//   a1 = {
-//  3 : 'hello',
-//  'one' : 'hi'
-// };
+//  a1 = {
+//    3 : 'hello',
+//    'one' : 'hi'
+//  };
+
+const a1 = {
+    3: 'hello',
+    'one': 'hi',
+};
+
+let out_1 = '';
+for (let key in a1) {
+    out_1 += key + '--' + a1[key] + '<br>';
+}
+document.querySelector('.out-1').innerHTML = out_1;
 
 // Task 2
 // Выведите на страницу элементы из масиива a2 у которых символов больше 4.
@@ -16,6 +26,24 @@
 //   'ivan': 'ivanov'
 // };
 
+a2 = {
+    3: 'hello',
+    'one': 'hi',
+    'testt': 'vodoley',
+    'ivan': 'ivanov'
+};
+
+let out_2 = '';
+for (let key in a2) {
+    let a2_1 = a2[key].split('');
+    if (a2_1.length > 4) {
+        out_2 += a2[key] + '<br>';
+    }
+}
+document.querySelector('.out-2').innerHTML = out_2;
+
+
+
 // Task 3
 // Выведите на страницу элементы из масиива a3 у которых ключ содержит больше 4 символов.
 
@@ -25,6 +53,23 @@
 //   'testt' : 'vodoley',
 //   'ivan' : 'ivanov'
 //  };
+
+a3 = {
+    3: 'hello',
+    'one': 'hi',
+    'testt': 'vodoley',
+    'ivan': 'ivanov'
+};
+
+let out_3 = '';
+for (let key in a3) {
+    let a3_1 = key.split('');
+    if (a3_1.length > 4) {
+        out_3 += key + '<br>';
+    }
+}
+document.querySelector('.out-3').innerHTML = out_3;
+
 
 // Task 4
 // Выведите на страницу элементы из масиива a4 у которых значение - число.
@@ -36,6 +81,22 @@
 //  'ivan' : 6
 // };
 
+a4 = {
+    3: 'hello',
+    'one': 4,
+    'testt': 'vodoley',
+    'ivan': 6
+};
+
+let out_4 = '';
+for (let key in a4) {
+    let a4_1 = a4[key];
+    if (isNaN(a4_1) == false) {
+        out_4 += key + ' -- ' + a4[key] + '<br>';
+    }
+}
+document.querySelector('.out-4').innerHTML = out_4;
+
 // Task 5
 //Дан ассоциативный массив a5. Найдите сумму элементов находящихся в нем.
 
@@ -45,6 +106,19 @@
 //   45 : 12,
 //   f : 6
 //  };
+
+a5 = {
+    a: 7,
+    z: 4,
+    45: 12,
+    f: 6
+};
+
+let summ = 0;
+for (let key in a5) {
+    summ += +a5[key];
+}
+document.querySelector('.out-5').innerHTML = summ;
 
 // Task 6
 // Создайте ассоциативный массив a6, который содержит ключи name, age, sex, height и значения любого персонажа. Выведите массив на страницу.
