@@ -224,15 +224,119 @@ document.querySelector('.out-11').innerHTML = out_11;
 // Task 12
 // Добавьте к предыдущей задаче select.u12-branch и кнопку. Пользователь может выбрать цвет ветки и нажать кнопку, после чего на страницу будут выведены только станции данной ветки.
 
+let btn12 = document.querySelector('.task12Btn');
+let sel_12 = document.querySelector('#u12-branch');
+function func_12() {
+    let out_12 = '';
+    let key = sel_12.value;
+    for (let i = 0; i < a11[key].length; i++) {
+        out_12 += a11[key][i] + ' &nbsp ';
+    }
+    document.querySelector('.out-12').innerHTML = out_12
+}
+btn12.onclick = func_12;
+
 // Task 13
 // Добавьте к предыдущей задаче кнопку button.u13-reverse которая при нажатии выводит станции ветки в обратном порядке. Внимание! Все подобные задачи не меняют массив, а меняют только вывод!!!
+
+let btn13 = document.querySelector('.u13-reverse');
+function func_13() {
+    let out_13 = '';
+    let key = sel_12.value;
+    for (let i = a11[key].length - 1; i >= 0; i--) {
+        out_13 += a11[key][i] + ' &nbsp ';
+    }
+    document.querySelector('.out-13').innerHTML = out_13
+}
+btn13.onclick = func_13;
 
 // Task 14
 // Добавьте к предыдущей задаче select.u14-find-station и кнопку. В select - пользователь может выбрать станцию, а вы перебирая массив - вывести ветку на которой эта станция находится.
 
+// let btn14 = document.querySelector('.u14-branch');
+// function func_14() {
+//     let sel_14 = document.querySelector('#u14-find-station');
+//     let out_14 = '';
+//     for (let key in a11) {
+//         for (let i = 0; i < a11[key].length; i++) {
+//             if (sel_14.value == a11[key][i]) {
+//                 out_14 = key;
+//             }
+//         }
+//     }
+//     document.querySelector('.out-14').innerHTML = out_14;
+// }
+// btn14.onclick = func_14;
+
+let btn14 = document.querySelector('.u14-branch');
+let sel14 = document.querySelector('#u14-find-station');
+for (let key in a11) {
+    let out14 = '';
+    for (i = 0; i < a11[key].length; i++) {
+        out14 = document.createElement('option');
+        out14.innerHTML = a11[key][i];
+        sel14.append(out14);
+    }
+}
+function func_14() {
+    // let sel_14 = document.querySelector('#u14-find-station');
+    let out_14 = '';
+    for (let key in a11) {
+        for (let i = 0; i < a11[key].length; i++) {
+            if (sel14.value == a11[key][i]) {
+                out_14 = key;
+            }
+        }
+    }
+    document.querySelector('.out-14').innerHTML = out_14;
+}
+btn14.onclick = func_14;
+
 // Task 15
 // Добавьте к предыдущему заданию 2 select где пользователь может выбрать 2 станции, и если они на одной ветке - то по нажатию на кнопку будет показано сколько станций между ними (сами станции не включаем. Если это соседние станции - то 0).
 
+let btn15 = document.querySelector('.u15-btn');
+let sel15_1 = document.querySelector('#u15-1-station');
+let sel15_2 = document.querySelector('#u15-2-station');
+for (let key in a11) {
+    let out15_1 = '';
+    let out15_2 = '';
+    for (let i = 0; i < a11[key].length; i++) {
+        out15_1 = document.createElement('option');
+        out15_2 = document.createElement('option');
+        // console.log(out15_1);
+        out15_1.innerHTML = a11[key][i];
+        out15_2.innerHTML = a11[key][i];
+        sel15_1.append(out15_1);
+        sel15_2.append(out15_2);
+
+    }
+
+}
+
+function func_15() {
+    let branch_15 = 0;
+    let out15 = document.querySelector('.out-15');
+
+    for (let key in a11) {
+        for (let i = 0; i < a11[key].length; i++) {
+            if (sel15_1.value == a11[key][i]) {
+                // out15 = key;
+                // console.log(a11[key].includes(sel15_1.value));
+                branch_15 += 1;
+
+            }
+
+        }
+        // }
+        // }
+        // out15.innerHTML = branch_15;
+
+        console.log(branch_15);
+    }
+
+}
+btn15.onclick = func_15;
 // Task 16
 // Добавьте 3 radiobutton.u16-radio которые содержат value = red, green, blue - в соотвтествии с цветом веток метро. Добавьте пустой select.u16-select. При выборе radio - программа должна в select добавлять option с названиями станций метро. Т.е. выбрали radio(value="green") то внутрь select должны быть записаны option со станциями зеленой ветки. Выбрали red - select должен быть очищен и добавлены option со станциями красной ветки.
 
