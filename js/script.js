@@ -253,21 +253,6 @@ btn13.onclick = func_13;
 // Task 14
 // Добавьте к предыдущей задаче select.u14-find-station и кнопку. В select - пользователь может выбрать станцию, а вы перебирая массив - вывести ветку на которой эта станция находится.
 
-// let btn14 = document.querySelector('.u14-branch');
-// function func_14() {
-//     let sel_14 = document.querySelector('#u14-find-station');
-//     let out_14 = '';
-//     for (let key in a11) {
-//         for (let i = 0; i < a11[key].length; i++) {
-//             if (sel_14.value == a11[key][i]) {
-//                 out_14 = key;
-//             }
-//         }
-//     }
-//     document.querySelector('.out-14').innerHTML = out_14;
-// }
-// btn14.onclick = func_14;
-
 let btn14 = document.querySelector('.u14-branch');
 let sel14 = document.querySelector('#u14-find-station');
 for (let key in a11) {
@@ -279,7 +264,6 @@ for (let key in a11) {
     }
 }
 function func_14() {
-    // let sel_14 = document.querySelector('#u14-find-station');
     let out_14 = '';
     for (let key in a11) {
         for (let i = 0; i < a11[key].length; i++) {
@@ -304,37 +288,37 @@ for (let key in a11) {
     for (let i = 0; i < a11[key].length; i++) {
         out15_1 = document.createElement('option');
         out15_2 = document.createElement('option');
-        // console.log(out15_1);
         out15_1.innerHTML = a11[key][i];
         out15_2.innerHTML = a11[key][i];
         sel15_1.append(out15_1);
         sel15_2.append(out15_2);
-
     }
-
 }
-
 function func_15() {
-    let branch_15 = 0;
-    let out15 = document.querySelector('.out-15');
-
+    let key1 = '';
+    let key2 = '';
+    let i1 = 0;
+    let i2 = 0;
+    let out15 = '';
+    let div15 = document.querySelector('.out-15');
     for (let key in a11) {
         for (let i = 0; i < a11[key].length; i++) {
             if (sel15_1.value == a11[key][i]) {
-                // out15 = key;
-                // console.log(a11[key].includes(sel15_1.value));
-                branch_15 += 1;
-
+                key1 = key;
+                i1 = i;
             }
 
+            if (sel15_2.value == a11[key][i]) {
+                key2 = key;
+                i2 = i;
+            }
+            if (key1 == key2 && i1 != i2) {
+                out15 = Math.abs(i2 - i1) - 1;
+            }
         }
-        // }
-        // }
-        // out15.innerHTML = branch_15;
 
-        console.log(branch_15);
     }
-
+    div15.innerHTML = out15;
 }
 btn15.onclick = func_15;
 // Task 16
