@@ -35,14 +35,13 @@ let out_2 = '';
 for (let key in a2) {
     let a2_1 = a2[key].split('');
     if (a2_1.length > 4) {
-        out_2 += a2[key] + '<br>';
+        out_2 += key + ' -- ' + a2[key] + '<br>';
     }
 }
 document.querySelector('.out-2').innerHTML = out_2;
 
 // Task 3
 // Выведите на страницу элементы из масиива a3 у которых ключ содержит больше 4 символов.
-
 // a3 = {
 //   3 : 'hello',
 //   'one' : 'hi',
@@ -61,14 +60,13 @@ let out_3 = '';
 for (let key in a3) {
     let a3_1 = key.split('');
     if (a3_1.length > 4) {
-        out_3 += key + '<br>';
+        out_3 += key + ' -- ' + a3[key] + '<br>';
     }
 }
 document.querySelector('.out-3').innerHTML = out_3;
 
 // Task 4
 // Выведите на страницу элементы из масиива a4 у которых значение - число.
-
 // a4 = {
 //  3 : 'hello',
 //  'one' : 4,
@@ -93,7 +91,6 @@ document.querySelector('.out-4').innerHTML = out_4;
 
 // Task 5
 //Дан ассоциативный массив a5. Найдите сумму элементов находящихся в нем.
-
 // a5 = {
 //   a : 7,
 //   z : 4,
@@ -307,7 +304,6 @@ function func_15() {
                 key1 = key;
                 i1 = i;
             }
-
             if (sel15_2.value == a11[key][i]) {
                 key2 = key;
                 i2 = i;
@@ -316,27 +312,153 @@ function func_15() {
                 out15 = Math.abs(i2 - i1) - 1;
             }
         }
-
     }
     div15.innerHTML = out15;
 }
 btn15.onclick = func_15;
+
 // Task 16
 // Добавьте 3 radiobutton.u16-radio которые содержат value = red, green, blue - в соотвтествии с цветом веток метро. Добавьте пустой select.u16-select. При выборе radio - программа должна в select добавлять option с названиями станций метро. Т.е. выбрали radio(value="green") то внутрь select должны быть записаны option со станциями зеленой ветки. Выбрали red - select должен быть очищен и добавлены option со станциями красной ветки.
 
+
+let inpRadio_16 = document.querySelectorAll('.u16-radio');
+let outSelect_16 = document.querySelector('.u16-select');
+let station = '';
+for (let i = 0; i < inpRadio_16.length; i++) {
+    inpRadio_16[i].oninput = func_16;
+    function func_16() {
+        outSelect_16.innerHTML = '';
+        for (let key in a11) {
+            if (inpRadio_16[i].value == key) {
+                for (let k16 = 0; k16 < a11[key].length; k16++) {
+                    station = document.createElement('option');
+                    station.innerHTML = a11[key][k16];
+                    outSelect_16.append(station);
+                }
+            }
+        }
+    }
+}
+
+
 // Task 17
 // ССоздайте массив, который описывает метро киевского метрополитена и обозначаются конечные и станции перехода, выведите его на страницу. Конечные - обозначать 0, перехода - 1.
-
 // la17 = {
 // 	"red" : [ ['Академгородок', 0] ,...],
 // 	"green" : 
 // }
 
+let a17 = {
+    "red": [['Академгородок', 0], 'Житомирская', 'Святошин', 'Нивки', 'Берестейская', 'Шулявская', 'Политехнический институт', 'Вокзальная', 'Университет', ['Театральная', 1], ['Крещатик', 1], 'Арсенальная', 'Днепр', 'Гидропарк', 'Левобережная', 'Дарница', 'Черниговская', ['Лесная', 0]],
+    "green": [['Сырец', 0], 'Дорогожичи', 'Лукьяновская', ['Золотые ворота', 1], ['Дворец спорта', 1], 'Кловская', 'Печерская', 'Дружбы народов', 'Выдубичи', 'Славутич', 'Осокорки', 'Позняки', 'Харьковская', 'Вырлица', 'Бориспольская', ['Красный хутор', 0]],
+    "blue": [['Героев Днепра', 0], 'Минская', 'Оболонь', 'Петровка', 'Тараса Шевченка', 'Контрактовая площадь', 'Почтовая площадь', ['Майдан Нэзалэжности', 1], ['Площадь Льва Толстого', 1], 'Олимпийская', 'Дворец "Украина"', 'Лыбедская', 'Демеевская', 'Голосеевская', 'Васильковская', 'Выставочный центр', 'Иподром', ['Теремки', 0]]
+}
+
 // Task 18
 // Выведите на страницу только станции с переходами из массива a17.
+
+let out_18 = document.querySelector('.out-18');
+let station_18 = '';
+for (let key in a17) {
+    for (let i = 0; i < a17[key].length; i++) {
+        for (let k = 0; k < a17[key][i].length; k++) {
+            if (a17[key][i][k] == 1) {
+                station_18 += a17[key][i][k - 1] + ' &nbsp ';
+            }
+        }
+    }
+}
+out_18.innerHTML = station_18;
 
 // Task 19
 // Создайте ассоциативный массив где ключами являются страны азии, а вложенными массивами - ассоциативный массив содержащий название столицы, количество населения, площадь. Выведите его на страницу.
 
+let a19 = {
+    'Abkhazia': { 'сapital': 'Сухуми', 'population': 243564, 'area': 860 },
+    'Azerbaijan': { 'сapital': 'Баку', 'population': 970560, 'area': 86600 },
+    'Armenia': { 'сapital': 'Ереван', 'population': 2995100, 'area': 29741 },
+    'Afghanistan': { 'сapital': 'Кабул', 'population': 29822848, 'area': 647500 },
+    'Bangladesh': { 'сapital': 'Дакка', 'population': 160221000, 'area': 144000 },
+    'Bahrain': { 'сapital': 'Манама', 'population': 1397000, 'area': 701 },
+    'Brunei': { 'сapital': 'Бандар-Сери-Бегаван', 'population': 436620, 'area': 5770 },
+    'Bhutan': { 'сapital': 'Тхимпху', 'population': 784000, 'area': 47000 },
+    'East-Timor': { 'сapital': 'Дили', 'population': 1167242, 'area': 14874 },
+    'Vietnam': { 'сapital': 'Ханой', 'population': 91713300, 'area': 329560 },
+    'Georgia': { 'сapital': 'Тбилиси', 'population': 3720400, 'area': 69700 },
+    'Israel': { 'сapital': 'Иерусалим', 'population': 8585000, 'area': 22072 },
+    'India': { 'сapital': 'Нью-Дели', 'population': 1268961000, 'area': 3287590 },
+    'Indonesia': { 'сapital': 'Джакарта', 'population': 255461700, 'area': 1904556 },
+    'Jordan': { 'сapital': 'Амман', 'population': 9813095, 'area': 89400 },
+    'Iraq': { 'сapital': 'Багдад', 'population': 37883543, 'area': 437072 },
+    'Iran': { 'сapital': 'Тегеран', 'population': 80840713, 'area': 1648000 },
+    'Yemen': { 'сapital': 'Сана', 'population': 27478000, 'area': 527970 },
+    'Kazakhstan': { 'сapital': 'Астана', 'population': 17753200, 'area': 2724900 },
+    'Cambodia': { 'сapital': 'Пномпень', 'population': 15827000, 'area': 181040 },
+    'Qatar': { 'сapital': 'Доха', 'population': 2553393, 'area': 11437 },
+    'Cyprus': { 'сapital': 'Никосия', 'population': 848319, 'area': 9250 },
+    'China': { 'сapital': 'Пекин', 'population': 1410549741, 'area': 9640821 },
+    'North-Korea': { 'сapital': 'Пхеньян', 'population': 25281000, 'area': 120540 },
+    'Kuwait': { 'сapital': 'Эль-Кувейт', 'population': 4330308, 'area': 17820 },
+    'Kyrgyzstan': { 'сapital': 'Бишкек', 'population': 6019500, 'area': 198500 },
+    'Laos': { 'сapital': 'Вьентьян', 'population': 6492400, 'area': 236800 },
+    'Lebanon': { 'сapital': 'Бейрут', 'population': 5988000, 'area': 10452 },
+    'Malaysia': { 'сapital': 'Куала-Лумпур', 'population': 31790277, 'area': 329750 },
+    'Maldives': { 'сapital': 'Мале', 'population': 402071, 'area': 300 },
+    'Mongolia': { 'сapital': 'Улан-Батор', 'population': 3081677, 'area': 1564116 },
+    'Myanmar': { 'сapital': 'Нейпьидо', 'population': 51419420, 'area': 678500 },
+    'Nepal': { 'сapital': 'Катманду', 'population': 28431494, 'area': 140800 },
+    'UAE': { 'сapital': 'Абу-Даби', 'population': 9267000, 'area': 82880 },
+    'Oman': { 'сapital': 'Маскат', 'population': 4523401, 'area': 309500 },
+    'Pakistan': { 'сapital': 'Исламабад', 'population': 196174380, 'area': 881913 },
+    'Russia': { 'сapital': 'Москва', 'population': 146600000, 'area': 17125200 },
+    'Saudi-Arabia': { 'сapital': 'Эр-Рияд', 'population': 31015999, 'area': 2218000 },
+    'Singapore': { 'сapital': 'Сингапур', 'population': 5607300, 'area': 714 },
+    'Syria': { 'сapital': 'Дамаск', 'population': 17185170, 'area': 185180 },
+    'Tajikistan': { 'сapital': 'Душанбе', 'population': 8551000, 'area': 143100 },
+    'Thailand': { 'сapital': 'Бангкок', 'population': 68147000, 'area': 514000 },
+    'Taiwan': { 'сapital': 'Тайбэй', 'population': 23188078, 'area': 35980 },
+    'Turkmenistan': { 'сapital': 'Ашхабад', 'population': 5439000, 'area': 491200 },
+    'Turkey': { 'сapital': 'Анкара', 'population': 78741053, 'area': 780580 },
+    'Uzbekistan': { 'сapital': 'Ташкент', 'population': 31807000, 'area': 447400 },
+    'Philippines': { 'сapital': 'Манила', 'population': 102980480, 'area': 300000 },
+    'Sri-Lanka': { 'сapital': 'Коломбо', 'population': 21866445, 'area': 65610 },
+    'South-Korea': { 'сapital': 'Сеул', 'population': 51664244, 'area': 98480 },
+    'Japan': { 'сapital': 'Токио', 'population': 127103388, 'area': 377944 }
+}
+
+let out_19 = '';
+for (let key19_1 in a19) {
+    out_19 += key19_1 + ' -- ';
+    for (let key19_2 in a19[key19_1]) {
+        out_19 += key19_2 + ' - ' + a19[key19_1][key19_2] + ' ; ';
+    }
+    out_19 += '<br>';
+}
+document.querySelector('.out-19').innerHTML = out_19;
+
 // Task 20
 // Дополните массив из задачи 19 так, чтобы пользователь мог сам выбирать страну в select, а необходимая информация подтягивалась на страницу.
+
+let outSelect_20 = document.querySelector('.u20-select');
+let outDiv_20 = document.querySelector('.out-20')
+let out20 = '';
+let out20_1 = '';
+for (let key in a19) {
+    out20 = document.createElement('option');
+    out20.classList.add('option')
+    out20.innerHTML = key;
+    outSelect_20.append(out20);
+    outSelect_20.oninput = func_20;
+}
+function func_20() {
+    out20_1 = '';
+    for (let key20_1 in a19) {
+        if (outSelect_20.value == key20_1) {
+            out20_1 += key20_1 + ' -- ';
+            for (let key20_2 in a19[key20_1]) {
+                out20_1 += key20_2 + ' - ' + a19[key20_1][key20_2] + '; ';
+            }
+        }
+        outDiv_20.innerHTML = out20_1;
+    }
+}
